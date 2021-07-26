@@ -11,7 +11,7 @@ from sphero_sdk import RawMotorModesEnum
 
 # initialize global variables
 speed = 75
-rot_speed = 50
+rot_speed = 115
 
 loop = asyncio.get_event_loop()
 rvr = SpheroRvrAsync(

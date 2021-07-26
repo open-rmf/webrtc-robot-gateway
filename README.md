@@ -10,6 +10,8 @@ https://www.raspberrypi.org/software/operating-systems/
 apt update && apt upgrade
 apt install avahi-daemon openssh-server
 # In /boot/config.txt, set force_hdmi_hotplug=1, enable_uart=1
+raspi-config # Enable webcam
+echo "bcm2835-v4l2" | sudo tee -a /etc/modules
 ```
 
 ### Set up and test connectivity with Robot Base ( Sphero RVR )
@@ -25,7 +27,7 @@ python3 drive_with_wasd_keys.py
 echo "export PYTHONPATH=$PYTHONPATH:$HOME/sphero-sdk-raspberrypi-python" >> ~/.bashrc
 ```
 
-### Set up DroidCam if using Android Phone for Camera
+### Set up DroidCam if using Android Phone for Camera ( Caution, Rpi might not be able to handle the high data bandiwidth )
 ```
 # On phone, install DroidCam Android App from App Store
 
@@ -68,7 +70,7 @@ cd; git clone https://github.com/aiortc/aiortc.git
 
 ### Run
 ```
-sudo droidcam-cli adb 4747
+sudo droidcam-cli adb 4747   # If using mobile phone as camera
 python3 rvr.py
 python3 server.py >> teleop
 ```
