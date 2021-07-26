@@ -9,7 +9,7 @@ https://www.raspberrypi.org/software/operating-systems/
 
 apt update && apt upgrade
 apt install avahi-daemon openssh-server
-# In /boot/config.txt, set force_hdmi_hotplug=1
+# In /boot/config.txt, set force_hdmi_hotplug=1, enable_uart=1
 ```
 
 ### Set up and test connectivity with Robot Base ( Sphero RVR )
