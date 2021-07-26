@@ -67,9 +67,16 @@ apt install libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config py
 pip3 install aiortc aiohttp
 cd; git clone https://github.com/aiortc/aiortc.git
 ```
+```
 
+### Set up Wireguard
+```
+apt install wireguard
+# Set up config files
+```
 ### Run
 ```
+wg-quick up wg0
 sudo droidcam-cli adb 4747   # If using mobile phone as camera
 python3 rvr.py
 python3 server.py >> teleop
