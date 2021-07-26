@@ -4,11 +4,22 @@
 
 ### Setup
 ```
-# Install Ubuntu 21.04 with Desktop on Rpi4
-https://ubuntu.com/download/raspberry-pi
+# Install Raspberry Pi OS on Rpi4
+https://www.raspberrypi.org/software/operating-systems/
 
 apt update && apt upgrade
 apt install avahi-daemon openssh-server
+# In /boot/config.txt, set force_hdmi_hotplug=1
+```
+
+### Set up and test connectivity with Robot Base ( Sphero RVR )
+```
+cd; git clone https://github.com/sphero-inc/sphero-sdk-raspberrypi-python.git
+cd sphero-sdk-raspberrypi-python; sh first-time-setup.sh
+usermod -aG tty $USER
+usermod -aG dialout $USER 
+cd projects/keyboard_control
+python3 drive_with_wasd_keys.py
 ```
 
 ### Set up DroidCam if using Android Phone for Camera
