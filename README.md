@@ -68,5 +68,7 @@ cd; git clone https://github.com/aiortc/aiortc.git
 
 ### Run
 ```
-python3 server.py
+sudo droidcam-cli adb 4747
+python3 rvr.py
+python3 server.py >> teleop
 ```
