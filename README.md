@@ -43,9 +43,16 @@ adb devices
 sudo droidcam-cli adb 4747 # Replace 4747 with whatever port is specified on app screen
 streamer -f jpeg -o image.jpeg
 
-## Install aiortc
+```
+
+### Install aiortc
+```
 apt install libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config python3-pip
 pip3 install aiortc aiohttp
 cd; git clone https://github.com/aiortc/aiortc.git
 ```
 
+### Run
+```
+python3 server.py
+```
