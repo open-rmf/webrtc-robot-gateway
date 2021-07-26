@@ -3,22 +3,27 @@ let sendChannel;
 
 function sendCmdRotateLeft() {
   console.log("Left");
-  sendChannel.send("Left");
+  sendChannel.send("A");
 }
 
 function sendCmdRotateRight() {
   console.log("Right");
-  sendChannel.send("Right");
+  sendChannel.send("D");
 }
 
 function sendCmdForward() {
   console.log("Forward");
-  sendChannel.send("Forward");
+  sendChannel.send("W");
 }
 
 function sendCmdReverse() {
   console.log("Reverse");
-  sendChannel.send("Reverse");
+  sendChannel.send("S");
+}
+
+function sendCmdStop() {
+  console.log("Stop");
+  sendChannel.send("X");
 }
 
 function negotiate() {

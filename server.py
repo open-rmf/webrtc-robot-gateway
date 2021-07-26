@@ -5,18 +5,20 @@ import logging
 import os
 import platform
 import ssl
+import sys
 
 from aiohttp import web
 
 from aiortc import RTCPeerConnection, RTCSessionDescription, RTCDataChannel
 from aiortc.contrib.media import MediaPlayer, MediaRelay
+import time
+from subprocess import Popen, PIPE, STDOUT
 
 ROOT = os.path.dirname(__file__)
 
 
 relay = None
 webcam = None
-
 
 def create_local_tracks(play_from):
     global relay, webcam
@@ -63,15 +65,14 @@ async def offer(request):
 
     @pc.on("datachannel")
     async def on_datachannel(channel):
-        print("Created sendChannel.")
+        #print("Created sendChannel.")
 
         @channel.on("message")
         def on_message(message):
-            print(f"Received message {message}")
+            print(f"{message}", file=sys.stdout, flush=True)
 
     @pc.on("connectionstatechange")
     async def on_connectionstatechange():
-        print("Connection state is %s" % pc.connectionState)
         if pc.connectionState == "failed":
             await pc.close()
             pcs.discard(pc)
@@ -108,6 +109,7 @@ async def on_shutdown(app):
 
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(description="WebRTC webcam demo")
     parser.add_argument("--cert-file", help="SSL certificate file (for HTTPS)")
     parser.add_argument("--key-file", help="SSL key file (for HTTPS)")
@@ -124,7 +126,7 @@ if __name__ == "__main__":
     if args.verbose:
         logging.basicConfig(level=logging.DEBUG)
     else:
-        logging.basicConfig(level=logging.INFO)
+        logging.basicConfig(level=logging.CRITICAL)
 
     if args.cert_file:
         ssl_context = ssl.SSLContext()
@@ -132,9 +134,11 @@ if __name__ == "__main__":
     else:
         ssl_context = None
 
+    #  Socket to talk to server
     app = web.Application()
     app.on_shutdown.append(on_shutdown)
     app.router.add_get("/", index)
     app.router.add_get("/client.js", javascript)
     app.router.add_post("/offer", offer)
     web.run_app(app, host=args.host, port=args.port, ssl_context=ssl_context)
+

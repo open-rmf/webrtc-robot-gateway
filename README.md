@@ -16,10 +16,13 @@ apt install avahi-daemon openssh-server
 ```
 cd; git clone https://github.com/sphero-inc/sphero-sdk-raspberrypi-python.git
 cd sphero-sdk-raspberrypi-python; sh first-time-setup.sh
+pip3 install aiohttp pyserial_asyncio
 usermod -aG tty $USER
 usermod -aG dialout $USER 
 cd projects/keyboard_control
 python3 drive_with_wasd_keys.py
+
+echo "export PYTHONPATH=$PYTHONPATH:$HOME/sphero-sdk-raspberrypi-python" >> ~/.bashrc
 ```
 
 ### Set up DroidCam if using Android Phone for Camera

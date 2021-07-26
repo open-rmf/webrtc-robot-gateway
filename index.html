@@ -30,9 +30,10 @@
 
     <h2>Controls</h2>
     <div id="teleop" style="display: none">
-        <button type="button" onclick=sendCmdRotateLeft()>Rotate Left</button>
-        <button type="button" onclick=sendCmdRotateRight()>Rotate Right</button>
         <button type="button" onclick=sendCmdForward()>Forward</button>
+        <button type="button" onclick=sendCmdRotateLeft()>Rotate Left</button>
+        <button type="button" onclick=sendCmdStop() style="color: red;"}>Stop</button>
+        <button type="button" onclick=sendCmdRotateRight()>Rotate Right</button>
         <button type="button" onclick=sendCmdReverse()>Reverse</button>
     </div>
 
