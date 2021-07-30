@@ -19,7 +19,7 @@ rvr = SpheroRvrAsync(
     )
 
 speed = 75
-rot_speed = 75
+rot_speed = 145
 
 
 async def main():
