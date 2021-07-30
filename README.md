@@ -68,7 +68,6 @@ apt install libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config py
 pip3 install aiortc aiohttp
 cd; git clone https://github.com/aiortc/aiortc.git
 ```
-```
 
 ### Set up Wireguard
 ```
