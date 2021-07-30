@@ -9,7 +9,8 @@ https://www.raspberrypi.org/software/operating-systems/
 
 apt update && apt upgrade
 apt install avahi-daemon openssh-server
-# In /boot/config.txt, set force_hdmi_hotplug=1, enable_uart=1
+# In /boot/config.txt, set hdmi_force_hotplug=1, enable_uart=1
+# In /boot/cmdline.txt, make sure console=.... is deleted
 raspi-config # Enable webcam
 echo "bcm2835-v4l2" | sudo tee -a /etc/modules
 ```
